@@ -192,8 +192,10 @@
       key: 'componentWillUnmount',
       value: function componentWillUnmount() {
         window.removeEventListener('resize', this.updateFrame);
-        this.scrollParent.removeEventListener('scroll', this.updateFrame, PASSIVE);
-        this.scrollParent.removeEventListener('mousewheel', NOOP, PASSIVE);
+        if (this.scrollParent) {
+          this.scrollParent.removeEventListener('scroll', this.updateFrame, PASSIVE);
+          this.scrollParent.removeEventListener('mousewheel', NOOP, PASSIVE);
+        }
       }
     }, {
       key: 'getOffset',
